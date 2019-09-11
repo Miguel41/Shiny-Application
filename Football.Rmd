@@ -1,0 +1,55 @@
+---
+title: "Shiny-Example"
+author: "Miguel Ortiz"
+date: "September 11th, 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(ggplot2)
+library(plotly)
+```
+
+## Football simulator
+
+This is a presentation to show the Shiny App generated for this assignment.
+
+- It shows a possible simulation of the result of a football match.
+- It calculates the number of scores for the two teams.
+
+## Input
+
+As input it takes:
+
+- Number of scores per match for team1
+- Quality of team2 keeper
+- Number of scores per match for team2
+- Quality of team2 keeper
+
+- Luck factor for team1
+
+
+## Output 1
+
+As output it generates a graph like this one with the scores for the two teams:
+
+```{r cars, echo = FALSE, comment=FALSE}
+data_team1 <- runif(50) * 2 + 0.2
+data_team2 <- runif(50) * 4 + 0.5
+df<-data.frame(team1 = data_team1, team2 = data_team2)
+        
+# Draw the plot using ggplot2
+plot <- ggplot(df, aes(x=team1, y=team2)) + geom_point()
+plot
+```
+
+## Output 2
+
+Also it generates a tex output with the most suitable result:
+
+```{r echo = FALSE, comment=FALSE}
+res <- sprintf("The most suitable result is: %d - %d", round(max(data_team1)), round(max(data_team2)))
+res
+```
+
